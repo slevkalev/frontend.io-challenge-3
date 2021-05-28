@@ -56,13 +56,17 @@
 	display: none;
 }
 
+button{
+	border: none;
+	padding: 0;
+	margin:  0;
+}
+
 /*Mobile Theme 1*/
 
 body{
 	position:relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: block;
 	font-family: 'Spartan', sans-serif;
 	font-size: 32px;
 	margin: 1em;
@@ -71,15 +75,14 @@ body{
 
 .container{
 	position: relative;
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	flex-wrap: wrap;
+	display: grid;
+	grid-row-gap: .5em;
 	margin: 1em auto;
 	width: 375px;
 	height:667px;
 	background: var(--vd-blue-main);
 	color: var(--white);
+	padding: 1em;
 }
 
 .header{
@@ -99,39 +102,59 @@ body{
 
 .theme-setting{
 	position: relative;
-	
 	display: grid;
-	width: 200px;
+	justify-content: flex-end;
 	grid-template-columns: auto auto;
+	margin-left: 2em;
 }
 
 .theme-header{
-	position:relative;
 	grid-column: 1;
-	grid-row: 1/2;
+	grid-row: 2;
 	text-transform: uppercase;
-	font-size: .6rem;
-	letter-spacing: .3rem;
-	margin-top: 2em;
+	font-size: .8rem;
+	letter-spacing: .1rem;
+	align-self: end;
+	padding-bottom: 1.5rem;
 }
 
 .choices{
+	grid-column:2;
 	grid-row: 1;
 	display: flex;
-	gap: 1em;
+	gap: 1rem;
 	width: 100%;
-	margin: 0 2em;
+	margin-left: 2rem;
 }
 
 .theme-label{
-	position: relative;
-	display: flex;
-	justify-content: flex-end;
-	gap: 1em;
-	right:0;
-	top:1em;
 	font-size: .75rem;
+	cursor: pointer;
 }
+
+.theme-radio{
+	display: none;
+}
+ .checkmark{
+ 	height:  17px;
+ 	width:  18px;
+ 	border-radius: 50%;
+ 	background: var(--red);
+ 	margin: .4rem;
+ 	opacity: 0;
+ }
+
+ #theme1:checked ~ #checkmark1{
+ 	opacity: 100%;
+ }
+
+  #theme2:checked ~ #checkmark2{
+ 	opacity: 100%;
+ }
+
+  #theme3:checked ~ #checkmark3{
+ 	opacity: 100%;
+ }
 
 .toggle{
 	grid-column: 2;
@@ -144,64 +167,17 @@ body{
 	border-radius: 2em;
 	width: 80px;
 	height: 30px;
-	margin-top: 2em;
-	margin-right: 2em;
+	margin-left: 1rem;
 }
 
-
-/*.theme-header{
-	position:relative;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	width: 50%;
-	text-transform: uppercase;
-	font-size: .6rem;
-	letter-spacing: .3rem;
-	margin-top: 2em;
-}
-
-.toggle{
-	position:relative;
-	display: flex;
-	text-transform: uppercase;
-	font-size: .75rem;
-	background: var(--vd-blue-secondary);
-	border-radius: 2em;
-	width: 80px;
-	height: 30px;
-	margin-top: 2em;
-	margin-right: 2em;
-}
-.theme-radio{
-	display:none;
-}
-.checkmark{
-	background: var(--red);
-	border-radius: 50%;
-	height: 15px;
-	width: 15px;
-	margin: .6em .5em;
-}
-
-.theme-label{
-	position: relative;
-	display: flex;
-	justify-content: flex-end;
-	gap: 1em;
-	right:0;
-	top:1em;
-	font-size: .75rem;
-}
-*/
 .screen{
+	position:  relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width:100%;
 	height:3em;
 	background: var(--vd-blue-secondary); 
-	margin: 0 1em;
 	border-radius: .3em;
 }
 
@@ -209,8 +185,8 @@ body{
 	position: relative;
 	display: grid;
 	grid-template-columns: 50px 50px 50px 50px;
-	grid-column-gap: .5rem;
-	grid-row-gap: .5rem;
+	grid-column-gap: 1.4rem;
+	grid-row-gap: 1rem;
 	background: var(--vd-blue-secondary);
 	width: 100%;
 	height: 400px;
@@ -219,48 +195,57 @@ body{
 }
 
 .key{
+	font-family: 'Spartan', sans-serif;
+	font-size: 1.5rem;
 	display: flex;
-	width: 50px;
-	height: 50px;
-	border-radius: .1em;
-	padding-top: .6rem;
-	padding-left: .8rem;
-	box-shadow: 2px 2px 0 var(--vdd-blue-secondary);
+	width: 60px;
+	height: 60px;
+	border-radius: .5rem;
+	padding-top: 1rem;
+	padding-left: 1.3rem;
+	box-shadow: 0 3px 0 var(--vdd-blue-secondary);
 }
 
+.reset{}
 
+.equals{}
 
 .t1-key-w{
 	color: var(--vd-gray-blue);
 	background: var(--white);
+	
 }
 .t1-key-b{
 	color: var(--white);
 	background: var(--vdd-blue);
 	font-size: .8rem;
 	text-transform: uppercase;
+	padding-left: 1rem;
+	padding-top: 1.4rem;
 }
 
 .t1-reset{
+	font-family: 'Spartan', sans-serif;
+	font-size: 1rem;
 	grid-column: 1 / 2;
-	width: 100px;
+	width: 130px;
 	height: 50px;
 	color: var(--white);
 	background: var(--vdd-blue);
 	font-size: .8rem;
 	text-transform: uppercase;
 	border-radius: .3rem;
-	margin-left: 1rem;
-	padding: 1rem 1.7rem;
+	padding: 1.2rem 2.6rem;
 }
 
-.t1-equal{
-	grid-column: 3/4;
-	width: 100px;
+.t1-equals{
+	font-family: 'Spartan', sans-serif;
+	font-size: 1.5rem;
+	grid-column: 3 / 4;
+	width: 130px;
 	height: 50px;
 	color: var(--white);
 	background: var(--dark-red);
 	border-radius: .3rem;
-	margin-left: 1rem;
-	padding: .5rem 2rem;
+	padding: .8rem 3.3rem;
 }
