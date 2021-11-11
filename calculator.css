@@ -4,21 +4,12 @@
 	--mobileWidth: 375px;
 	--desktopWidth:  1440px;
 
-	/*theme 1 colors*/
-	--blueA: hsl(222, 26%, 31%); /* main bg */
-	--blueB: hsl(223, 31%, 20%); /* toggle, keypad bg */
-	--blueC: hsl(224, 36%, 15%); /* screen bg */
-	--dkBlue1: hsl(225, 21%, 49%); /* key bg */
-	--dkBlue2: hsl(224, 28%, 35%); /* key shadow */
-	--red: hsl(6, 63%, 50%); /* key bg, toggle */
-	--dkRed: hsl(6, 70%, 34%); /* key shadow */
-	--lgOrange: hsl(30, 25%, 89%); /* key bg */
-	--gOrange: hsl(28, 16%, 65%); /* key shadow */
-	--dkgrBlue:  hsl(221, 14%, 31%); /* text */
-	--white: hsl(0,0%,100%); /* text */
+
 
 
 	/*theme 2 colors*/
+
+
 
 
 	/*theme3 colors*/
@@ -31,7 +22,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	color:  var(--white);
+	color:  white;
 	font-family: 'Spartan', sans-serif;
 	font-size: 32px;
 }
@@ -44,11 +35,73 @@ h1{
 }
 
 body{
+	/*theme 1 colors*/
+	--main-bg: hsl(222, 26%, 31%); /*  --main-bg */
+	--tog-keypad-bg: hsl(223, 31%, 20%); /* toggle, keypad bg */
+	--screen-bg: hsl(224, 36%, 15%); /* screen bg */
+	
+	--key-bg: hsl(225, 21%, 49%); /* key bg del reset*/
+	--key-shadow: hsl(224, 28%, 35%); /* key shadow */
+	
+	--tog-btn-red-key: hsl(6, 63%, 50%); /* key bg, toggle */
+	--red-key-shadow: hsl(6, 70%, 34%); /* key shadow */
+	
+	--key-bg2: hsl(30, 25%, 89%); /* key bg numbers and operators*/
+	--key-shadow2: hsl(28, 16%, 65%); /* key shadow */
+	
+	--text1:  hsl(221, 14%, 31%); /* text */
+	--text2: hsl(0,0%,100%); /* text white*/
+	--text3: hsl(0,0%,100%); /* text white*/;
+	--headtext: hsl(0,0%,100%);
+
 	position: relative;
 	display:  flex;
 	width: var(--mobileWidth);
 	margin:  0 auto;
-/*	background: var(--blueA);*/
+/*	background: var(--main-bg);*/
+}
+
+body.theme2{
+/*background*/
+	--main-bg: hsl(0, 0%, 90%); /* (main background) lightGray*/
+	--tog-keypad-bg: hsl(0, 5%, 81%); /* (toggle background, keypad background) grayish red */
+	--screen-bg: hsl(0, 0%, 93%); /* (screen background) --veryLightGray*/
+/*keys*/
+	--key-bg: hsl(185, 42%, 37%); /*(key background) darkModerateCyan*/
+	--key-shadow : hsl(185, 58%, 25%); /* (key shadow) veryDarkCyan*/
+
+	--tog-btn-red-key:  hsl(25, 98%, 40%); /* (key background, toggle) orange*/
+	--red-key-shadow: hsl(25, 99%, 27%); /*- Dark orange (key shadow)*/
+
+	--key-bg2: hsl(45, 7%, 89%); /* (key background) Light grayish yellow*/
+	--key-shadow2:  hsl(35, 11%, 61%);/*; Dark grayish orange (key shadow)*/
+
+/*Text*/
+	--text1: hsl(60, 10%, 19%); /*Very dark grayish yellow:*/
+	--text2: hsl(0, 0, 100%);/*White */
+	--text3: hsl(0, 0, 100%);/*White */;
+	--headtext: hsl(60, 10%, 19%);
+}
+
+body.theme3{
+/* background */
+	--main-bg: hsl(268, 75%, 9%); /* Very dark violet (main background) */
+	--tog-keypad-bg: hsl(268, 71%, 12%); /* Very dark violet (toggle background, keypad background, screen background) */
+	--screen-bg:  hsl(268, 71%, 12%); /* screen background */
+/*keys*/
+	--key-bg: hsl(281, 89%, 26%);/* Dark violet (key background) */
+	--key-shadow: hsl(285, 91%, 52%);	/* Vivid magenta (key shadow) */
+
+	--tog-btn-red-key: hsl(176, 100%, 44%); /*Pure cyan (key background, toggle)*/
+	--red-key-shadow: hsl(177, 92%, 70%) ;/* Soft cyan (key shadow) */
+
+	--key-bg2: hsl(268, 47%, 21%); /* Very dark violet (key background)*/
+	--key-shadow2: hsl(290, 70%, 36%)  ;/* Dark magenta (key shadow)*/
+/*Text*/
+	--text1: hsl(52, 100%, 62%) ;/*Light yellow*/
+	--text2: hsl(198, 20%, 13%) ;/*Very dark blue*/
+	--text3: hsl(0, 0, 100%) ;/*White (text)*/
+	--headtext: hsl(52, 100%, 62%) ;/*Light yellow*/;
 }
 
 .calculator{
@@ -58,7 +111,7 @@ body{
 	flex-wrap: wrap;
 	width: 100%;
 	min-height: 100vh;
-	background: var(--blueA);
+	background: var(--main-bg);
 	padding:  1rem .5rem .5rem .5rem;
 }
 
@@ -71,6 +124,7 @@ body{
 
 .calc-title{
 	width: 40%;
+	color:  var(--headtext);
 }
 
 .theme-set{
@@ -91,6 +145,7 @@ body{
 	font-size: .5rem;
 	font-weight: 600;
 	margin-right: .25rem;
+	color:  var(--headtext);
 }
 
 .choices{
@@ -107,6 +162,7 @@ body{
 .choices label{
 	font-size: .5rem;
 	cursor: pointer;
+	color:  var(--headtext);
 }
 
 .toggles{
@@ -114,7 +170,7 @@ body{
 	grid-row: 2;
 	position: relative;
 	display: flex;
-	background: var(--blueB);
+	background: var(--tog-keypad-bg);
 	border-radius:  1rem;
 	width: 100%;
 }
@@ -128,7 +184,7 @@ body{
  	min-height:  18px;
  	width:  18px;
  	border-radius: 50%;
- 	background: red;
+ 	background: var(--tog-btn-red-key);
  	margin: .2rem;
  	opacity: 0;
  }
@@ -152,7 +208,7 @@ body{
  	float:  right;
  	text-align: right;
  	height: 3rem;
- 	background: var(--blueC);
+ 	background: var(--screen-bg);
  	resize: none;
  	border-radius: .5rem;
  	border:  none;
@@ -173,7 +229,7 @@ body{
  	gap: .4rem;
  	width: 100%;
  	height: 70%;
- 	background:  var(--blueB);
+ 	background:  var(--tog-keypad-bg);
  	border-radius: .5rem;
  	padding-top: .5rem;
  	padding-bottom: .5rem;
@@ -182,32 +238,32 @@ body{
  .key{
  	width: 70px;
  	height:  70px;
- /*	margin-left: .3rem;*/
  	border-radius: .25rem;
- 	color: var(--dkgrBlue);
+ 	color: var(--text1);
  	font-size: 1rem;
  	font-weight: 700;
  	text-transform:  uppercase;
- 	box-shadow: 0 3px 0 var(--gOrange);
+ 	background: var(--key-bg2);
+ 	box-shadow: 0 4px 0 var(--key-shadow2);
  	border: none;
  }
 
  .key__large{
  	width: 150px;
- 	/*margin-left: .5rem;*/
  }
 
  .key__blue{
- 	background: var(--dkBlue1);
- 	color: var(--white);
- 	box-shadow: 0 3px 0 var(--dkBlue2);
- 	font-size: .75rem;
+ 	background: var(--key-bg);
+ 	color: var(--text3);
+ 	box-shadow: 0 4px 0 var(--key-shadow);
+ 	font-size: .6rem;
 
  }
  .key__red{
- 	background: var(--red);
- 	color: var(--white);
- 	box-shadow: 0 3px 0 var(--dkRed);
+ 	background: var(--tog-btn-red-key);
+ 	color: var(--text2);
+ 	box-shadow: 0 4px 0 var(--red-key-shadow);
+ 	font-size: .6rem;
  }
 
  .key:active{

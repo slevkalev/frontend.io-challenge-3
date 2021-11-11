@@ -1,11 +1,10 @@
-
-
 const calculator = {
 	elements:{
 		main: null,
 		header: null,
 		screen: null,
 		keysContainer: null,
+		// list of keys on the keypad
 		keys: [
 			"1", "2", "3", "del", 
 			"4", "5", "6", "+", 
@@ -18,7 +17,10 @@ const calculator = {
 	eventHandlers:{
 		oninput:null
 	},
-
+	// calculator registers used for storing keyed input
+	// op is to set the operator of the formula
+	// flag is set after = sign has been keyed in.
+	// after =sign reg1 is set to the screen value and reg2 and op are cleared
 	register:{
 		reg1:"",
 		reg2:"", 
@@ -50,14 +52,52 @@ const calculator = {
 		const label1 = document.createElement("label")
 		label1.setAttribute("for", "theme1")
 		label1.textContent = "1"
+		label1.addEventListener("click", ()=>{
+			if(theme1.checked){
+				theme2.checked=true
+				document.body.classList.add("theme2")
+				theme3.checked=false;
+				document.body.classList.remove("theme3")
+			}else{
+				theme2.checked=false
+				theme3.checked=false
+				document.body.classList.remove("theme2")
+				document.body.classList.remove("theme3")
+			}
+		})
 		
 		const label2 = document.createElement("label")
 		label2.setAttribute("for", "theme2")
 		label2.textContent = "2"
+		label2.addEventListener("click", ()=>{
+			if(theme2.checked){
+				theme1.checked=true
+				document.body.classList.remove("theme2")
+				theme3.checked=false;
+				document.body.classList.remove("theme3")
+			}else{
+				theme1.checked=false
+				document.body.classList.add("theme2")
+				theme3.checked=false
+				document.body.classList.remove("theme3")
+			}
+		})
 		
 		const label3 = document.createElement("label")
 		label3.setAttribute("for", "theme3")
 		label3.textContent = "3"
+		label3.addEventListener("click", ()=>{
+			if(theme3.checked){
+				theme2.checked=true
+				document.body.classList.add("theme2")
+				theme1.checked=false;
+			}else{
+				theme2.checked=false
+				document.body.classList.remove("theme2")
+				theme1.checked=false
+				document.body.classList.add("theme3")
+			}
+		})
 
 		choices.appendChild(label1)
 		choices.appendChild(label2)
@@ -76,21 +116,23 @@ const calculator = {
 		const tog1 = document.createElement("span")
 		tog1.classList.add("checkmark")
 		tog1.setAttribute("id","checkmark1")
+
 		const check2 = document.createElement("input")
 		check2.setAttribute("type", "checkbox")
 		check2.setAttribute("id", "theme2")
-
 		check2.setAttribute("name", "theme")
 		check2.setAttribute("value", 'theme2')
+	
 		const tog2 = document.createElement("span")
 		tog2.classList.add("checkmark")
 		tog2.setAttribute("id","checkmark2")
+
 		const check3 = document.createElement("input")
 		check3.setAttribute("type", "checkbox")
 		check3.setAttribute("id", "theme3")
-		
 		check3.setAttribute("name", "theme")
 		check3.setAttribute("value", 'theme3')
+		
 		const tog3 = document.createElement("span")
 		tog3.classList.add("checkmark")
 		tog3.setAttribute("id","checkmark3")
@@ -120,8 +162,6 @@ const calculator = {
 		this.elements.main.appendChild(this.elements.header)
 		this.elements.main.appendChild(this.elements.screen)
 		this.elements.main.appendChild(this.elements.keysContainer)
-
-
 	},
 
 	_createKeys(){
@@ -132,6 +172,7 @@ const calculator = {
 			btn.setAttribute("type", "button")
 			btn.classList.add("key")
 
+			// basic calculator functions
 			function calculate(reg1, reg2, op){
 				const arg1 = (reg1.charAt(reg1.length-1) ==".")? reg1.slice(0,-1):reg1
 				const arg2 = (reg2.charAt(reg2.length-1) ==".")? reg2.slice(0,-1):reg2
@@ -151,6 +192,8 @@ const calculator = {
 			}
 
 			switch(key){
+				// del key deletes last character of a keyed input.
+				// del does not delete characters after = sign calulations
 				case "del":
 					btn.classList.add("key__blue")
 					btn.textContent = key
@@ -163,7 +206,6 @@ const calculator = {
 							this.register.reg2 = this.register.reg2.slice(0,-1)
 							this.elements.screen.innerText = Number(this.register.reg2)
 						}
-					
 					})
 				break
 
@@ -290,7 +332,7 @@ const calculator = {
 					
 					})
 				break
-
+				//  . has been formatted to display one zero in front of the number
 				case ".":
 					btn.textContent = key
 					btn.addEventListener("click", ()=>{
@@ -327,6 +369,8 @@ const calculator = {
 				default:
 					btn.textContent = key
 					btn.addEventListener("click", ()=>{
+						// flag is false if no calculation has been executed
+						// the next keyed value will add to the reg1 or reg2 depending on criteria
 						if(this.register.flag == false){
 							if(this.register.reg1 =="" && this.register.op ==""){
 								this.register.reg1 +=key
@@ -339,16 +383,19 @@ const calculator = {
 								this.elements.screen.innerText =Number(this.register.reg2)
 							}
 						}
+						// flag is true when there has been a calculation executed (= has been keyed)
+						// the current value of reg1 is the result of the calculation
+						// if the next keyed value is an operator (+ - x /) the next number will store in reg2
+						// if the next keyed value is a number the calculated value in reg1 is replaced with the new keyed value
 						if(this.register.flag == true){
 							this.register.reg1 = ""
 							this.register.reg1 += key
 							this.elements.screen.innerText = Number(this.register.reg1)
 							this.register.flag = false
 						}
-						console.log(this.register)
 					})
 			}
-			
+			//add keys to the DOM
 			this.elements.keysContainer.appendChild(btn)
 		})
 
