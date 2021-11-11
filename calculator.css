@@ -4,16 +4,6 @@
 	--mobileWidth: 375px;
 	--desktopWidth:  1440px;
 
-
-
-
-	/*theme 2 colors*/
-
-
-
-
-	/*theme3 colors*/
-
 }
 
 *,
@@ -268,4 +258,19 @@ body.theme3{
 
  .key:active{
  	box-shadow: none;
+ }
+
+ @media (min-width:500px){
+ 	body{
+ 		width: 100%;
+ 		background: var(--main-bg);
+ 		justify-content: center;
+ 		align-items: center;
+ 		height:  100vh;
+ 		overflow: hidden;
+ 	}
+ 	.calculator{
+ 		width:  var(--mobileWidth);
+ 	}
+
  }

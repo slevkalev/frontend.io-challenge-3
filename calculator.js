@@ -200,11 +200,11 @@ const calculator = {
 					btn.addEventListener("click", ()=>{
 						if(this.register.reg2 == "" && this.register.flag == false){
 							this.register.reg1 = this.register.reg1.slice(0,-1)
-							this.elements.screen.innerText = Number(this.register.reg1)
+							this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 						}
 						if(this.register.reg2 !="" && this.register.flag == false){
 							this.register.reg2 = this.register.reg2.slice(0,-1)
-							this.elements.screen.innerText = Number(this.register.reg2)
+							this.elements.screen.innerText = Number(this.register.reg2).toLocaleString("en-US",{maximumFractionDigits:7});
 						}
 					})
 				break
@@ -234,7 +234,7 @@ const calculator = {
 							}
 							if(this.register.reg1 != "" && this.register.op != ""){
 								this.register.reg1 = calculate(this.register.reg1, this.register.reg2, this.register.op).toString()
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 								this.register.reg2 = ""
 								this.register.op =key
 							}
@@ -259,7 +259,7 @@ const calculator = {
 							}
 							if(this.register.reg1 != "" && this.register.op != ""){
 								this.register.reg1 = calculate(this.register.reg1, this.register.reg2, this.register.op).toString()
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 								this.register.reg2 = ""
 								this.register.op =key
 							}
@@ -278,12 +278,12 @@ const calculator = {
 							if(this.register.reg1 == ""){
 								this.register.reg1 = "0"
 								this.register.op = key
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 							}else if(this.register.reg1 != "" && this.register.op ==""){
 								this.register.op = key
 							}else if(this.register.reg1 !="" && this.register.op !=""){						
 								this.register.reg1 = calculate(this.register.reg1, this.register.reg2, this.register.op).toString()
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 								this.register.reg2 = ""
 								this.register.op = key
 							}
@@ -301,12 +301,12 @@ const calculator = {
 							if(this.register.reg1 == ""){
 								this.register.reg1 = "0"
 								this.register.op = key
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 							}else if(this.register.reg1 != "" && this.register.op ==""){
 								this.register.op = key
 							}else if(this.register.reg1 !="" && this.register.op !=""){						
 								this.register.reg1 = calculate(this.register.reg1, this.register.reg2, this.register.op).toString()
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 								this.register.reg2 = ""
 								this.register.op = key
 							}
@@ -374,13 +374,13 @@ const calculator = {
 						if(this.register.flag == false){
 							if(this.register.reg1 =="" && this.register.op ==""){
 								this.register.reg1 +=key
-								this.elements.screen.innerText = Number(this.register.reg1)
+								this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 							}else if(this.register.reg1 !="" && this.register.op ==""){
 								this.register.reg1 += key
-								this.elements.screen.innerText =Number(this.register.reg1)
+								this.elements.screen.innerText =Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 							}else{
 								this.register.reg2 += key
-								this.elements.screen.innerText =Number(this.register.reg2)
+								this.elements.screen.innerText =Number(this.register.reg2).toLocaleString("en-US",{maximumFractionDigits:7});
 							}
 						}
 						// flag is true when there has been a calculation executed (= has been keyed)
@@ -390,7 +390,7 @@ const calculator = {
 						if(this.register.flag == true){
 							this.register.reg1 = ""
 							this.register.reg1 += key
-							this.elements.screen.innerText = Number(this.register.reg1)
+							this.elements.screen.innerText = Number(this.register.reg1).toLocaleString("en-US",{maximumFractionDigits:7});
 							this.register.flag = false
 						}
 					})
