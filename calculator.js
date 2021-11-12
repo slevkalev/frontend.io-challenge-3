@@ -362,7 +362,6 @@ const calculator = {
 							this.elements.screen.innerText = this.register.reg1
 							this.register.flag = false
 						}
-						console.log(this.register)
 					})
 				break
 
